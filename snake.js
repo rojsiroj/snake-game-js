@@ -90,6 +90,7 @@ function draw() {
 
   // Snake eat food
   if (snakeHeadX === food.x && snakeHeadY === food.y) {
+    audMakan.play();
     score++;
     food = initiateFood();
   } else {
@@ -110,6 +111,7 @@ function draw() {
     snakeHeadY > totalColumn * box ||
     eatSelf(newHead, snake)
   ) {
+    audNabrak.play();
     clearInterval(game);
   }
 
@@ -122,12 +124,16 @@ let game = setInterval(draw, 100);
 // methods
 function detectDirection(event) {
   if (event.keyCode === 37 && direction !== "RIGHT") {
+    audKiri.play();
     direction = "LEFT";
   } else if (event.keyCode === 38 && direction !== "DOWN") {
+    audAtas.play();
     direction = "UP";
   } else if (event.keyCode === 39 && direction !== "LEFT") {
+    audKanan.play();
     direction = "RIGHT";
   } else if (event.keyCode === 40 && direction !== "UP") {
+    audBawah.play();
     direction = "DOWN";
   }
 }
